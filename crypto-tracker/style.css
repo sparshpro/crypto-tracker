@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+nav {
+    background-color: #333;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+    position: relative; /* Ensure relative positioning for children */
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 1em;
+    background-color: #F16222;
+    padding: 8px 12px;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.nav-link:hover {
+    background-color: #da561ae8;
+}
+
+.left-nav {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #F16222;
+    margin-left: auto; /* Push to the right */
+    text-decoration: none;
+    font-weight: bold; /* Make the title bold */
+    font-size: 1.5rem; /* Increase the font size */
+    font-family: 'Arial', sans-serif; /* Use a clean, sans-serif font */
+    letter-spacing: 1px; /* Add some letter spacing for readability */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.title:hover {
+    color: #ff7643; /* Slightly lighter color on hover */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Make the container the reference point for positioning the dialog */
+}
+
+#search-dialog {
+    position: absolute;
+    top: calc(100% + 10px); /* Position the dialog box below the search input */
+    left: -8px;
+  
+    width: 100%; /* Make it the same width as the search container */
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    border-radius: 10px;
+     min-width: 220px;
+    /* position:fixed; */
+    display: none; /* Initially hidden, will be shown when search results are available */
+}
+
+
+.dialog-content {
+    
+    position: relative;
+    
+}
+.dialog-content h2{
+margin: 0;
+margin-top: 10px;
+margin-left: 10px;
+font-size: 22px;
+
+
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: -6px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#search-results {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+#search-results li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+#search-results li:hover{
+    background-color: #dddbdb;
+}
+#search-results img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#search-box{
+    border:none;
+    outline: none;
+    padding: 4px 5px;
+    font-size: 0.8rem;
+}
+
+main {
+    flex: 1; /* Ensure main content takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    position: relative; /* For shimmer positioning */
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.favorite-icon {
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+
+/* pagination */
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+#pagination-controls button {
+    background-color: #f16222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pagination-controls button:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+
+#pagination-controls button:hover:not(:disabled) {
+    background-color: #d4501e;
+}
+
+
+
+/* favorite styling */
+.favorite-icon {
+    cursor: pointer;
+}
+
+.favorite-icon:hover,
+.favorite-icon.favorite {
+    color: gold;
+}
+
+
+/* Shimmers Effect */
+.shimmer-container {
+    display: none;
+    width: 100%;
+    padding: 10px;
+  
+}
+
+.shimmer-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+   
+}
+
+.shimmer-cell {
+    height: 35px;
+    flex: 1;
+    border-radius: 6px;
+
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 37%,
+        #f0f0f0 63%
+    );
+
+    background-size: 400% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.shimmer-cell:first-child {
+    flex: 0.5;
+}
+
+.shimmer-cell:nth-child(2) {
+    flex: 2;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
